@@ -17,26 +17,31 @@ module.exports = {
         allowNull: false,
       },
       mealType: {
-        type: Sequelize.ENUM,
-        values: ['Appetizers & Snacks', 'Breakfast', 'Lunch', 'Dinner', 'Drinks', 'Desserts'],
+        type: Sequelize.STRING,
         allowNull: false
       },
 
       dishType: {
-        type: Sequelize.ENUM,
-        values: ['Soups and Stews', 'Salads', 'Breads', 'Cakes', 'Fruits', 'Smoothie', 'Wraps', 'Others'],
+        type: Sequelize.STRING,
         allowNull: false
       },
          
       ingredients: {
-        type: Sequelize.ENUM,
-        values: ['Poultry', 'Pork', 'Dairy', 'Fish', 'Fruits', 'Grains', 'Vegetable', 'Pasta & Noodles', 'Seafoods', 'Meat', 'Others'],
+        type: Sequelize.STRING,
         allowNull: false
       },
       preparations: {
         type: Sequelize.STRING,
         unique: false,
       },
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'user',
+          key: 'id',
+          as: 'userId',
+        },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
